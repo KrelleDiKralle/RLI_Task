@@ -60,15 +60,19 @@ for i in energy_source:
 #### plot gas dataframe ####
 ############################
 
+# open figure box with specified attributes
 fig = plt.figure(figsize = (2, 2), facecolor = 'w', edgecolor = 'k', dpi = 600)
 ax = fig.gca()
 
+# generating bar plot for gas distribution
 plt.bar([str(x) for x in distribution_gas.index], distribution_gas[0])
 
+# setting title and labels
 plt.title('Energieanlagen: Gas', fontsize = 3, fontweight = 'bold')
 plt.xlabel('Leistung in kW', fontsize = 3)
 plt.ylabel('Anzahl der Energieanlangen', fontsize = 3)
 
+# setting line and tick-size
 plt.yticks(np.arange(0, 12, step = 1), fontsize = 3)
 plt.xticks([str(x) for x in distribution_gas.index], fontsize = 3, rotation = 45)
 ax.xaxis.set_tick_params(width = 0.5)
@@ -77,9 +81,13 @@ ax.yaxis.set_tick_params(width = 0.5)
 for axis in ['top','bottom','left','right']:
     ax.spines[axis].set_linewidth(0.5)
 
+# adding vertical grid
 plt.grid(axis = 'y', color = 'gray', linestyle = '-.', linewidth = 0.2)
+
+# option so that plot fits tightly in generated frame
 plt.tight_layout()
 
+# saving image to png-file
 plt.savefig('distribution_gas.png')
 
 
